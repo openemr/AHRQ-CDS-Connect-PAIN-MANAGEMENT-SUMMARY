@@ -6,7 +6,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "cql-exec-fhir": "^2.1.5",
     "cql-execution": "^3.0.1",
     "fhirclient": "^2.5.3",
@@ -16,28 +16,28 @@
     "react-collapsible": "^2.10.0",
     "react-dom": "^16.14.0",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.23.0",
+    "react-router-dom": "^6.24.1",
     "react-table": "^6.11.4",
     "react-tooltip": "^4.5.1",
-    "tocbot": "^4.27.19"
+    "tocbot": "^4.28.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.5.2",
-    "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/coverage-v8": "^1.6.0",
-    "axios": "^1.6.8",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/coverage-v8": "^2.0.2",
+    "axios": "^1.7.2",
     "cql-exec-vsac": "^2.2.0",
     "eslint": "^8.57.0",
     "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^6.1.1",
-    "jsdom": "^24.0.0",
+    "jsdom": "^24.1.0",
     "react-router-test-context": "^0.1.0",
     "temp": "^0.9.1",
-    "vite": "^5.2.11",
-    "vite-plugin-node-polyfills": "^0.21.0",
-    "vitest": "^1.5.2"
+    "vite": "^5.3.3",
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "vitest": "^2.0.2"
   },
   "overrides": {
     "@expo/image-utils": {

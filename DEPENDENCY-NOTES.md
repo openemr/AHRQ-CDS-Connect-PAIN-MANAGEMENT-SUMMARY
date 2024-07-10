@@ -12,8 +12,10 @@ dependencies are currently fixed to older versions:
 * **react-table**: The react-table library is currently tracking the latest v6
   versions because v7 and v8 are very different and migration is very poorly
   documented (or not documented at all).
-* **eslint**: ESLint 9.0 changes the configuration format. ESLint can be
-  upgraded when the team has time to update the configuration.
+* **eslint**: ESLint 9.0 changes the configuration format and APIs. As of July
+  2024, the eslint-config-react-app plugin does not yet support ESLint 9.0. See
+  [eslint-plugin-react#3699](https://github.com/jsx-eslint/eslint-plugin-react/issues/3699).
+  ESLint should be upgraded when the eslint-config-react-app plugin supports it.
 
 In addition, `overrides` are defined in `package.json` for transitive
 depencies that are locked to vulnerable versions. These overrides are:
