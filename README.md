@@ -10,7 +10,7 @@ This application was originally piloted with support for FHIR DSTU2.  The app ha
 
 Taking steps to ensure accessibility by the widest range of users, an accessibility subject matter expert performed a review of the application, enumerated issues found, and provided recommended remediations.  In addition to the recommendations, the [Mozilla ARIA Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) reference was used to address issues.  The application was then manually tested using accessibility tools including JAWS, VoiceOver, and the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/).
 
-This prototype application is part of the [CDS Connect](https://cds.ahrq.gov/cdsconnect) project, sponsored by the [Agency for Healthcare Research and Quality](https://www.ahrq.gov/) (AHRQ), and developed under contract with AHRQ by [MITRE's Health FFRDC](https://www.mitre.org/centers/cms-alliances-to-modernize-healthcare/who-we-are).
+This prototype application is part of the [CDS Connect](https://cds.ahrq.gov/cdsconnect) project, sponsored by the [Agency for Healthcare Research and Quality](https://www.ahrq.gov/) (AHRQ), and initially developed under contract with AHRQ by MITRE's [Health FFRDC](https://www.mitre.org/our-impact/rd-centers/health-ffrdc).
 
 ## Contributions
 
