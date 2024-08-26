@@ -45,7 +45,7 @@ Systems integrating the Pain Management Summary will need to expose the correspo
 5. If you'll be launching the app from an Epic EHR, modify `.env` to set `VITE_EPIC_SUPPORTED_QUERIES` to `true`
 6. Serve the code by executing `npm start` (runs on port 8000)
 
-## To build and deploy using a standard web server (static HTML and JS)
+### To build and deploy using a standard web server (static HTML and JS)
 
 The Pain Management Summary can be deployed as static web resources on any HTTP server.  There are several customizations, however, that need to be made based on the site where it is deployed.
 
@@ -64,6 +64,26 @@ The Pain Management Summary can be deployed as static web resources on any HTTP 
 9. Deploy the output from the `dist` folder to a standard web server
 
 Optionally to step 9, you can run `npm run serve` to use Vite's built-in server to host the code in `dist`. This approach, however, should not be used in production.
+
+### To update the CQL and/or ELM JSON files
+
+The CQL source and ELM JSON files are kept in the `src/cql/dstu2` and `src/cql/r4` folders. The Pain Management Summary app executes only the ELM JSON files, but it is helpful to keep the CQL source files alongside them.
+
+To update the CQL files:
+
+1. Download the CQL zips from the [CDS Connect artifact](https://cds.ahrq.gov/cdsconnect/artifact/factors-consider-managing-chronic-pain-pain-management-summary) or get them from another source (if applicable).
+2. Unzip the FHIR DSTU2 / 1.0.2 CQL package and copy the CQL and JSON files to `src/cql/dstu2`
+3. Unzip the FHIR R4 / 4.0.1 CQL package and copy the CQL and JSON files to `src/cql/r4`
+
+The ELM JSON files in the distributable zip packages include optional annotations, locators, result types, and signatures. These are not required by this application and significantly increase its file size. The ELM JSON files should be rebuilt without this optional data in order to improve the efficiency of this app.
+
+To rebuild the ELM JSON files without annotations, locators, result types, and unnecessary signatures:
+
+1. Install [JDK 11](https://adoptium.net/temurin/releases/?version=11) or greater (if necessary)
+2. Note the `translatorVersion` in one of the ELM JSON files from the downloaded zip package (e.g., `3.10.0`)
+3. Update the `runtimeOnly` dependency's version in the `build.gradle` file (e.g., `runtimeOnly 'info.cqframework:cql-to-elm-cli:3.10.0'`)
+4. Run `npm run cql-to-elm` to rebuild the ELM JSON files (note: warnings are expected, but there should be no errors)
+5. Review the changes in all ELM JSON files in the `src/cql` folders to ensure they look correct
 
 ### To update the valueset-db.json file
 

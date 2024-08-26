@@ -171,7 +171,7 @@ const mockSummaryA = {
         "End": null
       }
     ],
-    "NaloxoneMedications": [
+    "NaloxoneAndNalmefeneMedications": [
       {
         "Type": "Order",
         "Name": "Naloxone Hydrochloride 40 MG/ML Nasal Spray",
@@ -335,7 +335,7 @@ const mockSummaryB = {
       }
     ],
     "BenzodiazepineMedications": [],
-    "NaloxoneMedications": [],
+    "NaloxoneAndNalmefeneMedications": [],
     "UrineDrugScreens": [],
     "MostRecentMME": {
       "Name": "Morphine Milligram Equivalent (MME)",
@@ -492,7 +492,7 @@ const mockSummaryC = {
         "End": null
       }
     ],
-    "NaloxoneMedications": [],
+    "NaloxoneAndNalmefeneMedications": [],
     "UrineDrugScreens": [],
     "MostRecentMME": {
       "Name": "Morphine Milligram Equivalent (MME)",
@@ -598,7 +598,7 @@ const mockSummaryD = {
       }
     ],
     "BenzodiazepineMedications": [],
-    "NaloxoneMedications": [],
+    "NaloxoneAndNalmefeneMedications": [],
     "UrineDrugScreens": [
       {
         "Name": "Opiates [Presence] in Urine by Screen method",
@@ -775,7 +775,7 @@ const mockSummaryE = {
         "End": null
       }
     ],
-    "NaloxoneMedications": [],
+    "NaloxoneAndNalmefeneMedications": [],
     "UrineDrugScreens": [
       {
         "Name": "Opiates [Presence] in Urine by Screen method",
@@ -952,7 +952,7 @@ const mockSummaryF = {
         "End": null
       }
     ],
-    "NaloxoneMedications": [
+    "NaloxoneAndNalmefeneMedications": [
       {
         "Type": "Order",
         "Name": "Naloxone Hydrochloride 40 MG/ML Nasal Spray",
@@ -1142,7 +1142,7 @@ const mockSummaryG = {
         "End": null
       }
     ],
-    "NaloxoneMedications": [],
+    "NaloxoneAndNalmefeneMedications": [],
     "UrineDrugScreens": [
       {
         "Name": "Opiates [Presence] in Urine by Screen method",
@@ -1187,7 +1187,7 @@ const mockSectionFlags = {
       16,
       17
     ],
-    "NaloxoneMedications": [],
+    "NaloxoneAndNalmefeneMedications": [],
     "UrineDrugScreens": [],
     "MostRecentMME": []
   }

@@ -190,24 +190,24 @@ describe('#flagit', () => {
     expect(flagit(mockEntry, subSection, mockSummaryC)).toEqual(mockFlagB);
   });
 
-  it('flags "Naloxone Medications" entries correctly', () => {
-    const subSection = summaryMap['RiskConsiderations'][3];
-    const mockEntry = {
-      'Type': 'Order',
-      'Name': 'Naloxone Hydrochloride 40 MG/ML Nasal Spray',
-      'Start': '2018-04-20T00:00:00.000+00:00',
-      'End': null
-    };
-    const mockFlagA = 'Absence of Naloxone medication and most recent MME assessment is 50+ MME/day';
-    // no naloxone (true) AND MME >= 50 (true) => mockFlag
-    expect(flagit(null, subSection, mockSummaryG)).toEqual(mockFlagA);
-    // no naloxone (true) AND MME < 50 (false)] => false
-    expect(flagit(null, subSection, mockSummaryE)).toEqual(false);
+it('flags "Naloxone and Nalmefene Medications" entries correctly', () => {
+  const subSection = summaryMap['RiskConsiderations'][3];
+  const mockEntry = {
+    'Type': 'Order',
+    'Name': 'Naloxone Hydrochloride 40 MG/ML Nasal Spray',
+    'Start': '2018-04-20T00:00:00.000+00:00',
+    'End': null
+  };
+  const mockFlagA = 'Absence of Naloxone/Nalmefene medication and most recent MME assessment is 50+ MME/day';
+  // no naloxone (true) AND MME >= 50 (true) => mockFlag
+  expect(flagit(null, subSection, mockSummaryG)).toEqual(mockFlagA);
+  // no naloxone (true) AND MME < 50 (false)] => false
+  expect(flagit(null, subSection, mockSummaryE)).toEqual(false);
 
-    const mockFlagB = 'Evidence of Naloxone medication';
-    // naloxone (true) => mockFlag
-    expect(flagit(mockEntry, subSection, mockSummaryF)).toEqual(mockFlagB);
-  });
+  const mockFlagB = 'Evidence of Naloxone or Nalmefene medication';
+  // naloxone (true) => mockFlag
+  expect(flagit(mockEntry, subSection, mockSummaryF)).toEqual(mockFlagB);
+});
 
   it('flags "Pain Management Risk Screenings" entries correctly', () => {
     const subSection = summaryMap['RiskConsiderations'][4];

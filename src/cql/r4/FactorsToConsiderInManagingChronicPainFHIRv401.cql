@@ -10,22 +10,22 @@
 // not provide enough specificity.  These decisions were made in the context of the CDS Connect Workgroup and CDC
 // stakeholders, and are documented in the logic and/or in the CDS Connect artifact metadata.
 //
-// Version 3.0.0 makes significant changes to the inclusion criteria as well as other meaningful changes, including:
-// - Remove adjuvant analgesics from inclusions and add non-Opioid pain medications instead
-// - Add note (in comments) about excluding patients with sickle cell disease
-// - Add opioid tapering to risk factors for opioid-related harms
-// - Add adjuvant pain medications to treatment history section
-// - Rename "Opioid Pain Medications" value set to "Opioid pain medications"
-// - Rename "Adjuvant Analgesic Medications" value set to "Adjuvant pain medications"
-// - Rename "Non opioid pain medications" value set to "Nonopioid pain medications"
-// - Add "Management of opioid dosage tapering (procedure)" code (SNOMED-CT 874903005)
-// - Convert "ReportOlderThan65" and "ReportMostRecentPositivePregnancyObservation" to lists before unioning them
+// Version 4.0.0 is considered a major (breaking) release because property names in the summary have changed.
+// Version 4.0.0 includes the following changes:
+// - Renamed "NaloxoneMedications" to "NaloxoneAndNalmefeneMedications" in the Summary.RiskConsiderations tuple
+// - Renamed "Naloxone medications" value set to "Naloxone and Nalmefene medications"
+// - Renamed "NaloxoneMedicationRequests" expression to "NaloxoneAndNalmefeneMedicationRequests"
+// - Renamed "ReportNaloxoneMedicationRequests" expression to "ReportNaloxoneAndNalmefeneMedicationRequests"
+// - Renamed "NaloxoneMedicationStatements" expression to "NaloxoneAndNalmefeneMedicationStatements"
+// - Renamed "ReportNaloxoneMedicationStatements" expression to "ReportNaloxoneAndNalmefeneMedicationStatements"
+// - Renamed "ReportNaloxoneMedications" expression to "ReportNaloxoneAndNalmefeneMedications"
+// - Updated CDSConnectCommonsForFHIRv401 to version 2.1.1
 //
 // NOTE: This version has not been piloted in a clinical setting, but has undergone logic testing and review.
 //
 // ##Source guideline: [CDC Guideline for Opioid Prescribing for Chronic Pain](https://www.cdc.gov/drugoverdose/prescribing/guideline.html)
 
-library FactorsToConsiderInManagingChronicPainFHIRv401 version '3.0.0'
+library FactorsToConsiderInManagingChronicPainFHIRv401 version '4.0.0'
 
 // # Data model #
 
@@ -35,7 +35,7 @@ using FHIR version '4.0.1'
 // # Referenced libraries #
 
 // The CDS Connect Commons for FHIRv401 library provides functions representing commonly used CDS logic and patterns.
-include CDSConnectCommonsForFHIRv401 version '2.1.0' called C3F
+include CDSConnectCommonsForFHIRv401 version '2.1.1' called C3F
 // The FHIRHelpers library provides common functions for simplifying interaction w/ the FHIR R4 data model.
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 
@@ -116,7 +116,7 @@ valueset "Risk assessments relevant to pain management": 'https://cts.nlm.nih.go
 valueset "Benzodiazepine medications": 'https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.43'
 
 // [See value set in VSAC](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.42/expansion)
-valueset "Naloxone medications": 'https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.42'
+valueset "Naloxone and Nalmefene medications": 'https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.42'
 
 // [See value set in VSAC](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.28/expansion)
 valueset "Urine drug screen for pain management": 'https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.28'
@@ -1010,16 +1010,16 @@ define "ReportBenzodiazepineMedications":
   ("ReportBenzodiazepineMedicationRequests" union "ReportBenzodiazepineMedicationStatements") Medication
   sort by Start desc, End desc
 
-// Naloxone Medications (unrestricted lookback) - orders and statements with dates
+// Naloxone and Nalmefene medications (unrestricted lookback) - orders and statements with dates
 
-define "NaloxoneMedicationRequests":
-  C3F."ActiveCompletedOrStoppedMedicationRequest"(["MedicationRequest": "Naloxone medications"])
+define "NaloxoneAndNalmefeneMedicationRequests":
+  C3F."ActiveCompletedOrStoppedMedicationRequest"(["MedicationRequest": "Naloxone and Nalmefene medications"])
 
-define "NaloxoneMedicationStatements":
-  C3F."ActiveOrCompletedMedicationStatement"(["MedicationStatement": "Naloxone medications"])
+define "NaloxoneAndNalmefeneMedicationStatements":
+  C3F."ActiveOrCompletedMedicationStatement"(["MedicationStatement": "Naloxone and Nalmefene medications"])
 
-define "ReportNaloxoneMedicationRequests":
-  ("NaloxoneMedicationRequests") Request
+define "ReportNaloxoneAndNalmefeneMedicationRequests":
+  ("NaloxoneAndNalmefeneMedicationRequests") Request
   return {
     Type:  'Request',
     Name:  "ConceptText"(Request.medication as FHIR."CodeableConcept"),
@@ -1029,8 +1029,8 @@ define "ReportNaloxoneMedicationRequests":
   }
   sort by Start desc, End desc
 
-define "ReportNaloxoneMedicationStatements":
-  ("NaloxoneMedicationStatements") Statement
+define "ReportNaloxoneAndNalmefeneMedicationStatements":
+  ("NaloxoneAndNalmefeneMedicationStatements") Statement
   return {
     Type:  'Statement',
     Name:  "ConceptText"(Statement.medication as FHIR."CodeableConcept"),
@@ -1040,8 +1040,8 @@ define "ReportNaloxoneMedicationStatements":
   }
   sort by Start desc, End desc
 
-define "ReportNaloxoneMedications":
-  ("ReportNaloxoneMedicationRequests" union "ReportNaloxoneMedicationStatements") Medication
+define "ReportNaloxoneAndNalmefeneMedications":
+  ("ReportNaloxoneAndNalmefeneMedicationRequests" union "ReportNaloxoneAndNalmefeneMedicationStatements") Medication
   sort by Start desc, End desc
 
 // Risk screenings relevant to pain management - overall scores and dates (MOST RECENT w/ lookback 1 year)
@@ -1103,7 +1103,7 @@ define "Summary": {
     MostRecentMME: "ReportMostRecentMME",
     UrineDrugScreens: "ReportUrineDrugScreens",
     BenzodiazepineMedications: "ReportBenzodiazepineMedications",
-    NaloxoneMedications: "ReportNaloxoneMedications",
+    NaloxoneAndNalmefeneMedications: "ReportNaloxoneAndNalmefeneMedications",
     RiskScreeningsRelevantToPainManagement: "ReportRiskScreeningsRelevantToPainManagement"
   }
 }

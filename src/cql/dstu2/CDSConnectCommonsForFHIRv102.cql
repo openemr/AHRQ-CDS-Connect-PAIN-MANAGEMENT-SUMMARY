@@ -3,15 +3,17 @@
 // This library provides functions commonly used by CDS Connect CQL libraries as well as the
 // CDS Connect CDS Authoring Tool.
 //
-// Version 2.1.0 add the following functions:
-// - Finished: Filters encounters to only those with status 'finished'
+// Version 2.1.1 specifies the Patient context since the FHIR model does not specify a
+// default context and CQL Translator 3.x now defaults to Unfiltered context otherwise.
 
-library CDSConnectCommonsForFHIRv102 version '2.1.0'
+library CDSConnectCommonsForFHIRv102 version '2.1.1'
 
 using FHIR version '1.0.2'
 
 // Include the FHIRHelpers library for simplifying interacton w/ the FHIR data model
 include FHIRHelpers version '1.0.2' called FHIRHelpers
+
+context Patient
 
 // -------------------------------------------------- OBSERVATIONS -----------------------------------------------------
 

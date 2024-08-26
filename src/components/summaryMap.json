@@ -566,16 +566,21 @@
       ]
     },
     {
-      "name": "Naloxone Medications",
-      "dataKey": "NaloxoneMedications",
+      "name": "Naloxone and Nalmefene Medications",
+      "dataKey": "NaloxoneAndNalmefeneMedications",
       "dataKeySource": "RiskConsiderations",
       "info": [
         {
           "type": "elements",
-          "description": "Naloxone Medications queries the following elements:",
+          "description": "Naloxone and Nalmefene Medications queries the following elements:",
           "elements": [
             {
               "name": "Naloxone medication statements and orders",
+              "status": "any",
+              "lookback": "n/a"
+            },
+            {
+              "name": "Nalmefene medication statements and orders",
               "status": "any",
               "lookback": "n/a"
             }
@@ -605,11 +610,11 @@
                   }
                 ]
               },
-              "flagText": "Absence of Naloxone medication and most recent MME assessment is 50+ MME/day"
+              "flagText": "Absence of Naloxone/Nalmefene medication and most recent MME assessment is 50+ MME/day"
             },
             {
               "flag": "ifOneOrMore",
-              "flagText": "Evidence of Naloxone medication"
+              "flagText": "Evidence of Naloxone or Nalmefene medication"
             }
           ]
         }

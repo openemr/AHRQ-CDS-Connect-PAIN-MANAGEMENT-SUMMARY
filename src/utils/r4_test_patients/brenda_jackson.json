@@ -957,6 +957,52 @@
     {
       "resource": {
         "resourceType": "MedicationRequest",
+        "id": "26d732c7-7e01-4bde-8284-de7cd44d8fbe",
+        "subject": {
+          "reference": "Patient/5c41cecf-cf81-434f-9da7-e24e5a99dbc2"
+        },
+        "status": "active",
+        "intent": "order",
+        "doNotPerform": false,
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "2639720",
+              "display": "nalmefene 27 MG/ML Nasal Spray"
+            }
+          ],
+          "text": "nalmefene 27 MG/ML Nasal Spray"
+        },
+        "authoredOn": "2021-01-31T11:08:11.683Z"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "010adb35-1b9c-4f0e-9e1e-3abdd37ff890",
+        "subject": {
+          "reference": "Patient/5c41cecf-cf81-434f-9da7-e24e5a99dbc2"
+        },
+        "status": "active",
+        "intent": "order",
+        "doNotPerform": false,
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1725059",
+              "display": "Naloxone Hydrochloride 40 MG/ML Nasal Spray"
+            }
+          ],
+          "text": "Naloxone Hydrochloride 40 MG/ML Nasal Spray"
+        },
+        "authoredOn": "2023-08-01T11:07:11.683Z"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
         "id": "57de612f-2429-4663-a2f6-e09f43182231",
         "subject": {
           "reference": "Patient/5c41cecf-cf81-434f-9da7-e24e5a99dbc2"
