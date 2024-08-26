@@ -1,6 +1,6 @@
 {
   "name": "pain-management-factors",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Pain Management Factors SMART-on-FHIR App",
   "license": "Apache-2.0",
   "dependencies": {
